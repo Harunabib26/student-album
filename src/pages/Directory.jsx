@@ -60,13 +60,19 @@ export default function Directory() {
         <p className="text-ink-light italic">No students match your search.</p>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-          {filtered.map((s, i) => (
-            <Link
-              key={s.id}
-              to={`/student/${s.id}`}
-              className="polaroid block"
-              style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * (1 + (i % 3))}deg)` }}
-            >
+          {filtered.map((s, i) => {
+            const rot = (i % 2 === 0 ? -1 : 1) * (1.5 + (i % 3));
+            return (
+              <Link
+                key={s.id}
+                to={`/student/${s.id}`}
+                className="polaroid block"
+                style={{
+                  '--rotation': `${rot}deg`,
+                  '--hover-rotation': `${rot * -0.5}deg`,
+                  '--delay': `${i * 60}ms`,
+                }}
+              >
               <div className="w-full aspect-square bg-parchment-dark overflow-hidden">
                 {thumbs[s.id] ? (
                   <img src={thumbs[s.id]} alt={s.full_name} className="w-full h-full object-cover" />
@@ -79,7 +85,8 @@ export default function Directory() {
               <p className="text-sm text-center mt-2 font-medium">{s.full_name}</p>
               <p className="text-xs text-center text-ink-light">{s.reg_number}</p>
             </Link>
-          ))}
+            )
+          })}
         </div>
       )}
     </div>

@@ -10,12 +10,52 @@ body {
 }
 
 .polaroid {
-  @apply bg-cream p-2 pb-6 shadow-polaroid rotate-0 transition-transform duration-200;
+  @apply bg-cream p-3 pb-8 shadow-polaroid transition-all duration-300 relative;
+  transform: rotate(var(--rotation, 0deg));
+  opacity: 0;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay, 0ms);
 }
 
 .polaroid:hover {
-  transform: translateY(-4px) rotate(-1deg);
+  transform: translateY(-8px) scale(1.03) rotate(var(--hover-rotation, 1deg)) !important;
+  box-shadow: 0 20px 25px -5px rgba(28, 37, 65, 0.15), 0 10px 10px -5px rgba(28, 37, 65, 0.1);
+  z-index: 10;
 }
+
+/* Washi Tape Decal */
+.polaroid::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 75px;
+  height: 20px;
+  background-color: rgba(225, 215, 191, 0.6); /* Parchment tape look */
+  backdrop-filter: blur(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-left: 1px dashed rgba(28, 37, 65, 0.15);
+  border-right: 1px dashed rgba(28, 37, 65, 0.15);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.polaroid:hover::before {
+  transform: translateX(-50%) translateY(-2px) rotate(-5deg) scale(1.05);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--rotation, 0deg));
+  }
+}
+
 
 .seal {
   @apply inline-flex items-center justify-center rounded-full border-2 border-brass text-brass font-display text-xs tracking-wide;

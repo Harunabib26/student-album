@@ -16,12 +16,18 @@ export default function PhotoGrid({ photos, editable, onDeleted }) {
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 py-6">
-      {photos.map((photo, i) => (
-        <div
-          key={photo.id}
-          className="polaroid"
-          style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * (1 + (i % 3))}deg)` }}
-        >
+      {photos.map((photo, i) => {
+        const rot = (i % 2 === 0 ? -1 : 1) * (1.5 + (i % 3));
+        return (
+          <div
+            key={photo.id}
+            className="polaroid"
+            style={{
+              '--rotation': `${rot}deg`,
+              '--hover-rotation': `${rot * -0.5}deg`,
+              '--delay': `${i * 60}ms`,
+            }}
+          >
           <img
             src={photo.photo_url}
             alt={photo.caption || 'Album photo'}
@@ -41,7 +47,8 @@ export default function PhotoGrid({ photos, editable, onDeleted }) {
             </button>
           )}
         </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
