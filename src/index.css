@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-parchment text-ink font-body;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(28, 37, 65, 0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.polaroid {
+  @apply bg-cream p-2 pb-6 shadow-polaroid rotate-0 transition-transform duration-200;
+}
+
+.polaroid:hover {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.seal {
+  @apply inline-flex items-center justify-center rounded-full border-2 border-brass text-brass font-display text-xs tracking-wide;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A227;
+  border-radius: 999px;
+}
