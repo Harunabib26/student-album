@@ -57,7 +57,10 @@ export default function StudentProfile() {
         {student.nickname && (
           <p className="text-ink-light italic">"{student.nickname}"</p>
         )}
-        {student.address && <p className="text-sm mt-2">{student.address}</p>}
+        {student.address && <p className="text-sm mt-2">📍 {student.address}</p>}
+        {student.phone_number && (
+          <p className="text-sm mt-1">📞 <a href={`tel:${student.phone_number}`} className="text-brass hover:underline">{student.phone_number}</a></p>
+        )}
         {student.advice && (
           <blockquote className="mt-6 border-l-4 border-brass pl-4 font-display italic text-lg text-ink-light">
             "{student.advice}"

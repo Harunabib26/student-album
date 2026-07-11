@@ -9,6 +9,7 @@ export default function ProfileSetup() {
     address: '',
     nickname: '',
     advice: '',
+    phone_number: '',
   })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -54,6 +55,7 @@ export default function ProfileSetup() {
         address: form.address,
         nickname: form.nickname,
         advice: form.advice,
+        phone_number: form.phone_number,
       },
       { onConflict: 'user_id' }
     )
@@ -116,6 +118,17 @@ export default function ProfileSetup() {
             <input
               name="address"
               value={form.address}
+              onChange={handleChange}
+              className="w-full border-2 border-ink/30 focus:border-brass outline-none px-3 py-2 bg-parchment"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Phone Number</label>
+            <input
+              name="phone_number"
+              type="tel"
+              placeholder="e.g. +234 801 234 5678"
+              value={form.phone_number}
               onChange={handleChange}
               className="w-full border-2 border-ink/30 focus:border-brass outline-none px-3 py-2 bg-parchment"
             />
