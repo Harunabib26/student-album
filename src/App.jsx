@@ -7,6 +7,9 @@ import MyAlbum from './pages/MyAlbum'
 import Directory from './pages/Directory'
 import StudentProfile from './pages/StudentProfile'
 import { useAuth } from './lib/useAuth'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
+
 
 export default function App() {
   const { user, loading } = useAuth()
@@ -22,6 +25,8 @@ export default function App() {
         <Route path="/" element={<Navigate to="/directory" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/profile-setup" element={<ProfileSetup />} />
         <Route path="/my-album" element={<MyAlbum />} />
         <Route path="/directory" element={<Directory />} />
