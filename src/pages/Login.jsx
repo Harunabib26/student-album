@@ -60,7 +60,6 @@ export default function Login() {
               >
               Forgot password?
             </Link>
-
           </div>
           <button
             type="submit"
