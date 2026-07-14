@@ -3,16 +3,19 @@ import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import PhotoUpload from '../components/PhotoUpload'
 import PhotoGrid from '../components/PhotoGrid'
+import PaymentCard from '../components/PaymentCard'
 
 export default function MyAlbum() {
   const [student, setStudent] = useState(null)
   const [photos, setPhotos] = useState([])
+  const [userEmail, setUserEmail] = useState('')
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   const load = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return navigate('/login')
+    setUserEmail(user.email)
 
     const { data: studentData } = await supabase
       .from('students')
@@ -69,7 +72,17 @@ export default function MyAlbum() {
       </div>
 
       <h2 className="font-display text-2xl font-bold text-ink mb-4">My Album</h2>
-      <PhotoUpload studentId={student.id} onUploaded={load} />
+      
+      {photos.length >= 2 && !student.is_premium ? (
+        <PaymentCard 
+          studentId={student.id} 
+          userEmail={userEmail} 
+          onPaymentSuccess={load} 
+        />
+      ) : (
+        <PhotoUpload studentId={student.id} onUploaded={load} />
+      )}
+
       <PhotoGrid photos={photos} editable onDeleted={load} />
     </div>
   )
