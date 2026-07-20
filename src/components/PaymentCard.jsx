@@ -87,7 +87,8 @@ export default function PaymentCard({ studentId, userEmail, onPaymentSuccess }) 
         Unlock Unlimited Photos
       </h2>
       <p className="text-sm text-ink-light mb-5">
-        You've used your 2 free photo slots. Pay a one-time fee to upload as many photos as you like to your album.
+        You've used your 2 free photo slots. Pay a <strong>one-time fee</strong> to upload as many photos as you like to your album.
+        The minimum is <strong>₦500</strong>, but feel free to pay more — every extra naira is appreciated! 🙏
       </p>
 
       {/* Amount Input */}
