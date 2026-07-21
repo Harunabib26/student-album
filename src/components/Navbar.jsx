@@ -12,9 +12,12 @@ export default function Navbar({ user }) {
   return (
     <nav className="border-b-2 border-ink bg-cream/90 backdrop-blur sticky top-0 z-20">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display text-xl font-bold text-ink tracking-tight">
+        <Link to="/" className="flex items-center gap-3 font-display text-xl font-bold text-ink tracking-tight">
           <img src="/logo.svg" alt="Class Album logo" className="w-8 h-8" />
-          Class Album
+          <span>Class Album</span>
+          <span className="seal text-[11px] px-2.5 py-0.5 hidden sm:inline-block font-body font-semibold">
+            Computer Science &bull; Class of 2026
+          </span>
         </Link>
 
         <div className="flex items-center gap-6 font-body text-sm">

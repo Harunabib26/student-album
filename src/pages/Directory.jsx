@@ -43,8 +43,15 @@ export default function Directory() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
-      <h1 className="font-display text-3xl font-bold text-ink mb-2">Class Directory</h1>
-      <p className="text-ink-light mb-6">Browse every registered student's album.</p>
+      <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
+        <div>
+          <h1 className="font-display text-3xl font-bold text-ink mb-1">Class Directory</h1>
+          <p className="text-ink-light">Browse every registered student's album.</p>
+        </div>
+        <div className="seal px-3 py-1 text-xs font-semibold">
+          Computer Science &bull; Class of 2026
+        </div>
+      </div>
 
       <input
         type="text"

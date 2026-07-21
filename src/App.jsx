@@ -11,6 +11,13 @@ import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 
 
+function ProtectedRoute({ user, children }) {
+  if (!user) {
+    return <Navigate to="/login" replace />
+  }
+  return children
+}
+
 export default function App() {
   const { user, loading } = useAuth()
 
@@ -22,15 +29,43 @@ export default function App() {
     <>
       <Navbar user={user} />
       <Routes>
-        <Route path="/" element={<Navigate to="/directory" replace />} />
+        <Route path="/" element={<Navigate to={user ? "/directory" : "/login"} replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/profile-setup" element={<ProfileSetup />} />
-        <Route path="/my-album" element={<MyAlbum />} />
-        <Route path="/directory" element={<Directory />} />
-        <Route path="/student/:id" element={<StudentProfile />} />
+        <Route
+          path="/profile-setup"
+          element={
+            <ProtectedRoute user={user}>
+              <ProfileSetup />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-album"
+          element={
+            <ProtectedRoute user={user}>
+              <MyAlbum />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/directory"
+          element={
+            <ProtectedRoute user={user}>
+              <Directory />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <StudentProfile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   )

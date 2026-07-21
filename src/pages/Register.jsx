@@ -31,7 +31,7 @@ export default function Register() {
   return (
     <div className="max-w-md mx-auto mt-16 px-6">
       <div className="bg-cream border-2 border-ink p-8 shadow-polaroid">
-        <p className="seal px-3 py-1 mb-4 w-fit">Class of {new Date().getFullYear()}</p>
+        <p className="seal px-3 py-1 mb-4 w-fit">Computer Science &bull; Class of 2026</p>
         <h1 className="font-display text-3xl font-bold text-ink mb-6">
           Register your page
         </h1>
