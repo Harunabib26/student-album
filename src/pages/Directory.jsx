@@ -42,14 +42,34 @@ export default function Directory() {
   })
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
-        <div>
-          <h1 className="font-display text-3xl font-bold text-ink mb-1">Class Directory</h1>
-          <p className="text-ink-light">Browse every registered student's album.</p>
-        </div>
-        <div className="seal px-3 py-1 text-xs font-semibold">
-          Computer Science &bull; Class of 2026
+    <div className="max-w-5xl mx-auto px-6 py-10">
+      {/* Official Department Banner */}
+      <div className="bg-cream border-2 border-ink p-6 md:p-8 mb-8 shadow-polaroid relative overflow-hidden">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <span className="seal px-3 py-0.5 text-xs font-semibold">
+                🎓 Class of 2026
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-brass">
+                Department of Computer Science
+              </span>
+            </div>
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-ink tracking-tight">
+              Al-Qalam University Katsina
+            </h1>
+            <p className="text-sm text-ink-light mt-1 font-body">
+              Official Student Directory &amp; Digital Yearbook
+            </p>
+          </div>
+          <div className="text-left md:text-right border-t md:border-t-0 md:border-l-2 border-brass/40 pt-3 md:pt-0 md:pl-6">
+            <p className="text-3xl font-display font-bold text-brass leading-none">
+              {students.length}
+            </p>
+            <p className="text-[11px] text-ink-light uppercase tracking-wider font-semibold mt-1">
+              Registered Students
+            </p>
+          </div>
         </div>
       </div>
 
