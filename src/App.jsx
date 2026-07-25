@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Footer from './components/Footer'
 import ProfileSetup from './pages/ProfileSetup'
 import MyAlbum from './pages/MyAlbum'
 import Directory from './pages/Directory'
@@ -26,9 +27,8 @@ export default function App() {
   }
 
   return (
-  <div className="min-h-screen flex flex-col">
-    <Navbar user={user} />
-    <main className="flex-1">
+    <>
+      <Navbar user={user} />
       <Routes>
         <Route path="/" element={<Navigate to={user ? "/directory" : "/login"} replace />} />
         <Route path="/login" element={<Login />} />
@@ -68,8 +68,6 @@ export default function App() {
           }
         />
       </Routes>
-    </main>
-    <Footer />
-  </div>
-)
+    </>
+  )
 }
