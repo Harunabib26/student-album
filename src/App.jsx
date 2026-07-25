@@ -26,8 +26,9 @@ export default function App() {
   }
 
   return (
-    <>
-      <Navbar user={user} />
+  <div className="min-h-screen flex flex-col">
+    <Navbar user={user} />
+    <main className="flex-1">
       <Routes>
         <Route path="/" element={<Navigate to={user ? "/directory" : "/login"} replace />} />
         <Route path="/login" element={<Login />} />
@@ -67,6 +68,8 @@ export default function App() {
           }
         />
       </Routes>
-    </>
-  )
+    </main>
+    <Footer />
+  </div>
+)
 }
