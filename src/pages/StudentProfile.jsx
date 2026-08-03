@@ -61,6 +61,11 @@ export default function StudentProfile() {
         {student.phone_number && (
           <p className="text-sm mt-1">📞 <a href={`tel:${student.phone_number}`} className="text-brass hover:underline">{student.phone_number}</a></p>
         )}
+        {student.social_handle && (
+          <p className="text-sm mt-1">
+            📱 <span className="text-ink-light">Social:</span> <a href={`https://instagram.com/${student.social_handle.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-brass hover:underline">{student.social_handle}</a>
+          </p>
+        )}
         {student.advice && (
           <blockquote className="mt-6 border-l-4 border-brass pl-4 font-display italic text-lg text-ink-light">
             "{student.advice}"

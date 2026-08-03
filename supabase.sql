@@ -9,6 +9,9 @@ create table if not exists students (
   address text,
   nickname text,
   advice text,
+  phone_number text,
+  social_handle text,
+  is_premium boolean default false,
   created_at timestamp with time zone default now()
 );
 

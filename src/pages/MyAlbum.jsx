@@ -55,7 +55,15 @@ export default function MyAlbum() {
             {student.nickname && (
               <p className="text-ink-light italic">"{student.nickname}"</p>
             )}
-            {student.address && <p className="text-sm mt-2">{student.address}</p>}
+            {student.address && <p className="text-sm mt-2">📍 {student.address}</p>}
+            {student.phone_number && (
+              <p className="text-sm mt-1">📞 <a href={`tel:${student.phone_number}`} className="text-brass hover:underline">{student.phone_number}</a></p>
+            )}
+            {student.social_handle && (
+              <p className="text-sm mt-1">
+                📱 <span className="text-ink-light">Social:</span> <a href={`https://instagram.com/${student.social_handle.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-brass hover:underline">{student.social_handle}</a>
+              </p>
+            )}
           </div>
           <Link
             to="/profile-setup"

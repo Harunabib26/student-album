@@ -10,6 +10,7 @@ export default function ProfileSetup() {
     nickname: '',
     advice: '',
     phone_number: '',
+    social_handle: '',
   })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -56,6 +57,7 @@ export default function ProfileSetup() {
         nickname: form.nickname,
         advice: form.advice,
         phone_number: form.phone_number,
+        social_handle: form.social_handle,
       },
       { onConflict: 'user_id' }
     )
@@ -129,6 +131,17 @@ export default function ProfileSetup() {
               type="tel"
               placeholder="e.g. +234 801 234 5678"
               value={form.phone_number}
+              onChange={handleChange}
+              className="w-full border-2 border-ink/30 focus:border-brass outline-none px-3 py-2 bg-parchment"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Social Media Handle (Instagram/Twitter)</label>
+            <input
+              name="social_handle"
+              type="text"
+              placeholder="e.g. @yourhandle"
+              value={form.social_handle}
               onChange={handleChange}
               className="w-full border-2 border-ink/30 focus:border-brass outline-none px-3 py-2 bg-parchment"
             />
